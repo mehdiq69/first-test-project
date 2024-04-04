@@ -9,7 +9,7 @@ import styles from "./AddProduct.module.css";
 
 const AddProduct = () => {
   const { products, setProducts } = useContext(UserContext);
-  const [showAddForm, setShowAddForm] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(true);
   const addFormHandler = () =>
     !showAddForm ? setShowAddForm(true) : setShowAddForm(false);
 
