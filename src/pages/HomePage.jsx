@@ -9,20 +9,24 @@ import AddProduct from "../components/addProduct/AddProduct";
 import Loader from "../components/loader/Loader";
 
 const HomePage = () => {
-  const { products } = useContext(UserContext);
+  const { showCards, products } = useContext(UserContext);
   return (
     <>
       <div className={styles.topBox}>
         <SearchBox />
         <AddProduct />
       </div>
-      <div className={styles.container}>
-      {!products.length && <Loader />}
-        {products.map((p) => (
-          <Card key={p.id} data={p} />
-        ))}
-      </div>
-      <Pagination />
+      {!showCards ? (
+        <div className={styles.container}>
+          {!products.length && <Loader />}
+          {products.map((p) => (
+            <Card key={p.id} data={p} />
+          ))}
+        </div>
+      ) : (
+        <Loader />
+      )}
+      {/* <Pagination /> */}
     </>
   );
 };

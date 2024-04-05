@@ -5,6 +5,7 @@ import api from "../services/configs";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
+  const [showCards, setShowCards] = useState(false);
   const [products, setProducts] = useState([]);
   const [text, setText] = useState("");
   useEffect(() => {
@@ -20,7 +21,7 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ products, setProducts, text, setText }}>
+    <UserContext.Provider value={{showCards,setShowCards, products, setProducts, text, setText }}>
       {children}
     </UserContext.Provider>
   );

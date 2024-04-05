@@ -29,9 +29,9 @@ const EditProduct = ({ id }) => {
     const fetchEditProfile = async (value) => {
       const result = await api.put(`/products/${id}`, value);
       const result2 = await api.get("/products");
+      setProducts(result2);
       // const filterd = products.filter((value) => value.id != id);
       // setProducts(filterd);
-      setProducts(result2);
       // setInitialValues(result);
     };
 
@@ -47,7 +47,7 @@ const EditProduct = ({ id }) => {
           // () => console.log(id)
         }
       >
-        Edit
+        Edit Product
       </button>
       {!showAddForm && (
         <div className={styles.container}>

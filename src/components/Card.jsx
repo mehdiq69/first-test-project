@@ -2,6 +2,7 @@
 // import { UserContext } from "../context/context";
 
 import EditProduct from "./addProduct/EditProduct";
+import DeleteProduct from "./addProduct/DeleteProduct";
 import styles from "./Card.module.css";
 
 const Card = ({ data }) => {
@@ -15,8 +16,11 @@ const Card = ({ data }) => {
       <img src={image} />
       <h2>{title}</h2>
       <p>{desc}</p>
+      <h6>
+        <span>price:</span> {price} $
+      </h6>
       <div className={styles.actions}>
-        <h6>{price} $</h6>
+        <DeleteProduct id={id} />
         <EditProduct id={id} />
       </div>
     </div>
