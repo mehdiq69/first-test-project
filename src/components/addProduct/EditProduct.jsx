@@ -31,8 +31,8 @@ const EditProduct = ({ id }) => {
       const result2 = await api.get("/products");
       // const filterd = products.filter((value) => value.id != id);
       // setProducts(filterd);
-      // setInitialValues(result);
       setProducts(result2);
+      // setInitialValues(result);
     };
 
     fetchEditProfile(value);
