@@ -7,41 +7,62 @@ import { useState } from "react";
 import api from "../../services/configs";
 import styles from "./AddProduct.module.css";
 
-const AddProduct = () => {
+const EditProduct = ({ id }) => {
   const { products, setProducts } = useContext(UserContext);
+  const [initialValues, setInitialValues] = useState({
+    id: "",
+    title: "",
+    price: "",
+    desc: "",
+    image: "",
+  });
+
   const [showAddForm, setShowAddForm] = useState(true);
-  const addFormHandler = () =>
+  const editFormHandler = async (id) => {
     !showAddForm ? setShowAddForm(true) : setShowAddForm(false);
+    const result = await api.get(`/products/${id}`);
+
+    setInitialValues(result);
+  };
 
   const onSubmit = (value) => {
-    const { title, image, desc, price } = value;
-    const fetchNewProduct = async () => {
-      const result = await api.post("/products", { title, image, desc, price });
-      setProducts([...products, result]);
+    const fetchEditProfile = async (value) => {
+      const result = await api.put(`/products/${id}`, value);
+      const result2 = await api.get("/products");
+      // const filterd = products.filter((value) => value.id != id);
+      // setProducts(filterd);
+      // setInitialValues(result);
+      setProducts(result2);
     };
 
- 
-    fetchNewProduct();
+    fetchEditProfile(value);
     setShowAddForm(!showAddForm);
   };
 
   return (
     <>
-      <button onClick={addFormHandler}>Add Product</button>
+      <button
+        onClick={
+          () => editFormHandler(id)
+          // () => console.log(id)
+        }
+      >
+        Edit
+      </button>
       {!showAddForm && (
         <div className={styles.container}>
           <div className={styles.formik}>
             <Formik
-              initialValues={{
-                title: "",
-                image: "",
-                desc: "",
-                price: "",
-              }}
-              onSubmit={(value) => onSubmit(value)}
+              initialValues={initialValues}
+              onSubmit={(value) => onSubmit(value, id)}
+              enableReinitialize={true}
             >
               <Form>
-                {/* <Field type="number" name="id" placeholder="type a id number..." /> */}
+                {/* <Field
+                  type="number"
+                  name="id"
+                  placeholder="type a id number..."
+                /> */}
                 <Field
                   className={styles.inputs}
                   type="text"
@@ -66,10 +87,9 @@ const AddProduct = () => {
                   name="desc"
                   placeholder="description..."
                 />
-
                 <div className={styles.buttonBox}>
                   <button className={styles.submit} type="submit">
-                    Submit
+                    Update
                   </button>
                   <button
                     className={styles.close}
@@ -87,4 +107,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;
