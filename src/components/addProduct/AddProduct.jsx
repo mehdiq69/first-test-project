@@ -7,7 +7,15 @@ import { useState } from "react";
 import api from "../../services/configs";
 import styles from "./AddProduct.module.css";
 
+import * as yup from "yup";
+
 const AddProduct = () => {
+  const validation = yup.object().shape({
+    title: yup.string().required(),
+    desc: yup.string().required(),
+    price: yup.number().required(),
+    image: yup.string().required(),
+  });
   const { products, setProducts } = useContext(UserContext);
   const [showAddForm, setShowAddForm] = useState(true);
   const addFormHandler = () =>
@@ -20,7 +28,6 @@ const AddProduct = () => {
       setProducts([...products, result]);
     };
 
- 
     fetchNewProduct();
     setShowAddForm(!showAddForm);
   };
@@ -39,6 +46,7 @@ const AddProduct = () => {
                 price: "",
               }}
               onSubmit={(value) => onSubmit(value)}
+              validationSchema={validation}
             >
               <Form>
                 {/* <Field type="number" name="id" placeholder="type a id number..." /> */}

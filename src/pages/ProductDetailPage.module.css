@@ -1,0 +1,67 @@
+.card {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  /* align-items: flex-start; */
+  justify-content: space-between;
+  background-color: #fff;
+  color: black;
+  /* border: 2px dashed #e2e2e2; */
+  border-radius: 20px;
+}
+
+/* data box style  */
+
+.dataBox {
+    width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  /* border: 1px solid red; */
+}
+
+.card h2 {
+  color: #3874ff;
+  font-size: 1.5rem;
+  height: 10%;
+  /* border: 1px solid red; */
+  margin-top: 7%;
+}
+
+.card p {
+    margin-top: 7%;
+  color: #666;
+  font-size: 1.5rem;
+  font-weight: 600;
+  /* border: 1px solid red; */
+  height:30%;
+}
+
+.card h6 {
+  color: #666;
+  margin: 7% auto 0;
+  font-style: italic;
+  /* border: 1px solid red; */
+  font-size:1.5rem;
+}
+.card h6 span {
+  color: crimson;
+}
+
+/* img styles */
+
+.img {
+  margin: auto;
+  /* border:1px solid red; */
+  padding: 10px;
+}
+.card img {
+  width: 99%;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10%;
+}

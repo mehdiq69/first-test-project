@@ -9,9 +9,9 @@
 }
 .header a {
   text-decoration: none;
-  color: #000000;
+
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 .footer {
   text-align: center;
@@ -19,4 +19,14 @@
   padding: 20px;
   margin-top: 80px;
   border-radius: 10px;
+}
+.navBar {
+  display:flex;
+  justify-content: space-evenly;
+  width: 300px;
+  /* border:1px solid red; */
+  color: #fff;
+}
+.active{
+  color:#fff;
 }

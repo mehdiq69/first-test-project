@@ -7,7 +7,15 @@ import { useState } from "react";
 import api from "../../services/configs";
 import styles from "./AddProduct.module.css";
 
+import * as yup from "yup";
+
 const EditProduct = ({ id }) => {
+  const validation = yup.object().shape({
+    title: yup.string().required(),
+    desc: yup.string().required(),
+    price: yup.number().required(),
+    image: yup.string().required(),
+  });
   const { products, setProducts } = useContext(UserContext);
   const [initialValues, setInitialValues] = useState({
     id: "",
@@ -56,6 +64,7 @@ const EditProduct = ({ id }) => {
               initialValues={initialValues}
               onSubmit={(value) => onSubmit(value, id)}
               enableReinitialize={true}
+              validationSchema={validation}
             >
               <Form>
                 {/* <Field
