@@ -22,7 +22,7 @@ const ProductsList = () => {
         <div className={styles.card2}>
           {!products.length && <Loader />}
           {products.map((data) => (
-            <div className={styles.card}>
+            <div key={data.id} className={styles.card}>
               <div className={styles.img}>
                 <img src={data.image} />{" "}
               </div>
