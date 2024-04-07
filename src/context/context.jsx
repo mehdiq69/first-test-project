@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
       }
     };
     fetchProducts();
-    console.log(products);
+    // console.log(products);
   }, []);
 
   return (
